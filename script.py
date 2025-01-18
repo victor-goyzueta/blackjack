@@ -98,7 +98,7 @@ def main():
 
             if resultado == True:
                 dinero += apuesta
-            else:
+            elif resultado == False:
                 dinero -= apuesta
 
         if dinero <= 0:
