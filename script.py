@@ -27,7 +27,7 @@ def turno_jugador(baraja, mano):
         print(f"\nYour hand: {mostrar_mano(mano)} (Score: {calcular_puntaje(mano)})")
         if calcular_puntaje(mano) > 21:
             print("You are over 21. You lose.")
-            break
+            False
         elif calcular_puntaje(mano) == 21:
             print("Blackjack!")
             break
