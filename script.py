@@ -84,10 +84,17 @@ def main():
 
     while dinero > 0:
         print(f"\nCurrent money: {dinero}€")
-        apuesta = int(input(f"How much do you want to bet? (1-{dinero}): "))
-        if apuesta <= 0 or apuesta > dinero:
-            print("Invalid bet. Try again.")
-            continue
+
+        # Validar la entrada de la apuesta
+        while True:
+            try:
+                apuesta = int(input(f"How much do you want to bet? (1-{dinero}): "))
+                if apuesta <= 0 or apuesta > dinero:
+                    print("Invalid bet. Please enter a value between 1 and your current money.")
+                else:
+                    break
+            except ValueError:
+                print("Invalid input! Please enter a valid integer.")
 
         baraja = crear_baraja()
 
