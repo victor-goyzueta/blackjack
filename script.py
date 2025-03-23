@@ -32,7 +32,7 @@ def turno_jugador(baraja, mano):
             print("Blackjack!")
             break
 
-        accion = input("What do you want to do? (1: Give me a card, 2: I don't want any more cards): ").strip()
+        accion = input("What do you want to do?\n1: Give me a card\n2: I don't want any more cards\n\n> ").strip()
 
         if accion == '1':
             carta = baraja.pop()
