@@ -27,7 +27,7 @@ def turno_jugador(baraja, mano):
         print(f"\nYour hand: {mostrar_mano(mano)} (Score: {calcular_puntaje(mano)})")
         if calcular_puntaje(mano) > 21:
             print("You are over 21. You lose.")
-            False
+            return False
         elif calcular_puntaje(mano) == 21:
             print("Blackjack!")
             break
@@ -45,7 +45,10 @@ def turno_jugador(baraja, mano):
 
     return True
 
-def turno_crupier(baraja, mano):
+def turno_crupier(baraja, mano, puntaje_jugador):
+    if puntaje_jugador > 21:
+        return None
+
     print(f"\nDealer's turn. Their starting hand: {mostrar_mano(mano)}")
 
     while calcular_puntaje(mano) < 17:
@@ -66,7 +69,7 @@ def determinar_ganador(puntaje_jugador, puntaje_crupier):
     if puntaje_jugador > 21:
         print("You lose. You exceeded 21.")
         return False
-    elif puntaje_crupier > 21 or puntaje_jugador > puntaje_crupier:
+    elif puntaje_crupier is None or puntaje_crupier > 21 or puntaje_jugador > puntaje_crupier:
         print("You win!")
         return True
     elif puntaje_jugador < puntaje_crupier:
@@ -93,7 +96,7 @@ def main():
 
         if turno_jugador(baraja, mano_jugador):
             puntaje_jugador = calcular_puntaje(mano_jugador)
-            puntaje_crupier = turno_crupier(baraja, mano_crupier)
+            puntaje_crupier = turno_crupier(baraja, mano_crupier, puntaje_jugador)
             resultado = determinar_ganador(puntaje_jugador, puntaje_crupier)
 
             if resultado == True:
